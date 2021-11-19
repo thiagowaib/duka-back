@@ -3,24 +3,24 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config()
 
-const app = express();
+async function initServer(){
 
-mongoose.connect(process.env.SERVER_URL,
-{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-},()=>{
-    console.log("Backend Conectado.")
-});
+    const app = express();
+    await mongoose.connect(process.env.SERVER_URL,
+    {
+        useNewUrlParser: true,
+    });
+    app.use(express.json());
+    app.use(cors());
 
-app.use(express.json());
-app.use(cors());
+    // Conexão com rotas
+    app.use(require('./routes'));
 
-// Conexão com rotas
-app.use(require('./routes'));
+    // Conexão com porta {port} + Mensagem de confirmação
+    const server = require('http').Server(app);
+    server.listen(process.env.SERVER_PORT);
+    
+    console.log("Backend Online")
+}
+initServer()
 
-// Conexão com porta {port} + Mensagem de confirmação
-const server = require('http').Server(app);
-server.listen(process.env.SERVER_PORT);
