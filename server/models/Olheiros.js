@@ -5,6 +5,10 @@ const OlheirosSchema = new mongoose.Schema({
       type: String,
       default: "",
     },
+    talento_ids: [{
+      type: String,
+      default: null
+    }]
 }, {timestamps: true});
 
 
