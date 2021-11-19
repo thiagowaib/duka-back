@@ -1,9 +1,11 @@
 const express = require('express');
 const routes = new express.Router();
 
-/* ------------------------------ */
-// const Controller1 = require('./controller/Controller1');
-// routes.get("/param", Controller1.method);
-/* ------------------------------ */
+const ControllerTalentos = require('./controllers/ControllerTalentos');
+
+routes.get("/listTalentos", ControllerTalentos.list)
+routes.post("/createTalento", ControllerTalentos.create)
+routes.delete("/removeTalento/:id", ControllerTalentos.remove)
+
 
 module.exports = routes;
