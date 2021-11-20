@@ -18,7 +18,7 @@ async function initServer(){
 
     // Conexão com porta {port} + Mensagem de confirmação
     const server = require('http').Server(app);
-    server.listen(process.env.SERVER_PORT || 8080);
+    server.listen(process.env.PORT || 5000);
     
     console.log("Backend Online")
 }
