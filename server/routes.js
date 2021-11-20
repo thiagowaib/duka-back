@@ -9,6 +9,9 @@ const ControllerOlheiros = require('./controllers/ControllerOlheiros');
     routes.get("/listTalentos", ControllerTalentos.list)
     routes.post("/createTalento", ControllerTalentos.create)
     routes.delete("/removeTalento/:id", ControllerTalentos.remove)
+    // --Set|Get Tutorial
+    routes.post("/updateTutorial", ControllerTalentos.updateTutorial) 
+    routes.get("/getTutorial", ControllerTalentos.getTutorial) 
 
 // Rotas controladoras dos Olheiros
     // --CRUD TESTE
