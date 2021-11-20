@@ -29,4 +29,26 @@ module.exports = {
 },
   // _______________________________________________
   // 
+
+  
+  async updateTutorial(req, res){
+    const queryId = "6197bb2c4e1bb09ffb56d75a"
+    const {status} = req.body
+
+    const raquel = await Talentos.findById(queryId)
+    raquel.tutorial = status
+    raquel.save((err)=>{
+      if(err)
+        return res.status(400).send({error: err})
+      else
+        return res.status(200).send()
+    })
+  },
+
+  async getTutorial(req, res){
+    const queryId = "6197bb2c4e1bb09ffb56d75a"
+    const raquel = await Talentos.findById(queryId)
+    const dado = raquel.tutorial
+    return res.status(200).send(dado)
+  }
 };

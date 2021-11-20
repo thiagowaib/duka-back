@@ -28,7 +28,11 @@ const TalentosSchema = new mongoose.Schema({
     historico_ids:[{
       type: Number,
       default: null
-    }]
+    }],
+    tutorial:{
+      type: Boolean,
+      default: false,
+    }
 }, {timestamps: true});
 
 
