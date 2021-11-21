@@ -18,6 +18,8 @@ const ControllerOlheiros = require('./controllers/ControllerOlheiros');
     routes.get("/listOlheiros", ControllerOlheiros.list)
     routes.post("/createOlheiro", ControllerOlheiros.create)
     routes.delete("/removeOlheiro/:id", ControllerOlheiros.remove)
-
+    // --Set|Get Talentos
+    routes.post("/updateFollows", ControllerOlheiros.updateFollows) 
+    routes.get("/getFollows", ControllerOlheiros.getFollows) 
 
 module.exports = routes;

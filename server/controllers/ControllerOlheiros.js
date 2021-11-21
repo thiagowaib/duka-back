@@ -29,4 +29,26 @@ module.exports = {
 },
   // _______________________________________________
   // 
+
+  async getFollows(req, res){
+    const queryId = "6197d4122d54571fb65b5480"
+    const olheiro = await Olheiros.findById(queryId)
+    const dado = olheiro.talentos
+    return res.status(200).send(dado)
+  },
+  async updateFollows(req, res){
+    const {action, nome} = req.body
+    const queryId = "6197d4122d54571fb65b5480"
+    const olheiro = await Olheiros.findById(queryId)
+    if(action.toLowerCase() === "push")
+      olheiro.talentos.push(nome.toString())
+    else if(action.toLowerCase() === "pop")
+      olheiro.talentos = olheiro.talentos.filter(talento => talento!==nome)
+    olheiro.save((err)=>{
+      if(err)
+        return res.status(400).send()
+      else
+        return res.status(200).send()
+    })
+  }
 };
